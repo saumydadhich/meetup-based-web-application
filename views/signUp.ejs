@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The Concert Hub</title>
+  <meta name="description" content="The Concert Hub">
+  <meta name="author" content="Saumy">
+  <link rel="stylesheet" href="/assets/stylesheets/default.css">
+  <link href='https://fonts.googleapis.com/css?family=Cinzel%20Decorative' rel='stylesheet'>
+</head>
+
+<body>
+  <header class="headers">
+    <% include partials/header.ejs %>
+    <% include partials/navigation.ejs %>
+  </header>
+
+  <main>
+    <% if(failure != 'none') { %>
+      <% for(var i = 0; i < errorMessage.length; i++) { %>
+        <h5 class = "error">#  <%= errorMessage[i].msg %></h5>
+        <% } %>
+    <% } %>
+    <div class="container">
+      <form id = "signup" method="post" action="/signup/validate">
+        <label for="username">Username/Email</label>
+        <input type="email" id="username" name="username" placeholder="username" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="password" required>
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" placeholder="first name" required>
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" placeholder="last name" required>
+        <label for="address1">Address Line 1</label>
+        <input type="text" id="address1" name="address1" placeholder="Address Line 1" required>
+        <label for="address2">Address Line 2</label>
+        <input type="text" id="address2" name="address2" placeholder="Address Line 2" required>
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" placeholder="city" required>
+        <label for="state">State</label>
+        <input type="text" id="state" name="state" placeholder="state" required>
+        <label for="zipcode">Zipcode</label>
+        <input type="text" id="zipcode" name="zipcode" placeholder="Zipcode" required>
+        <label for="country">Country</label>
+        <input type="text" id="country" name="country" placeholder="Country" required>
+        <!-- <% if(failure === "password") { %>
+          <h6 class="error">Incorrect Password</h6>
+        <% } %>
+        <% if(failure === "invalidPassword") {
+          for(var i = 0; i < errorMessage.length; i++) { %>
+            <h6 class="error"><%= errorMessage[i].msg %></h6>
+          <% }
+        }%> -->
+        <input type="submit" class="formButton" value="Submit">
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <% include partials/footer.ejs %>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The Concert Hub</title>
+    <meta name="description" content="The Concert Hub">
+    <meta name="author" content="Saumy">
+    <link rel="stylesheet" href="/assets/stylesheets/default.css">
+    <link href='https://fonts.googleapis.com/css?family=Cinzel%20Decorative' rel='stylesheet'>
+  </head>
+
+  <body>
+    <header class="headers">
+      <%- include partials/header.ejs %>
+      <%- include partials/navigation.ejs %>
+    </header>
+    <main>
+      <div class="homeConcert">
+        <img id = "concert" src="assets/images/crowd.jpg" alt="concert crowd">
+      </div>
+      <h4>Welcome to the Concert Hub. The one stop for all music lovers to stay updated about all the live musical events happening around the city. This website has all the information you need about the concerts, and they are filtered on the basis of Genres, which makes it easier for you to look for the concerts of the music you love.</h4>
+    </main>
+    <footer>
+      <% include partials/footer.ejs %>
+    </footer>
+  </body>
+</html>

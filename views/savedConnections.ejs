@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The Concert Hub</title>
+  <meta name="description" content="The Concert Hub">
+  <meta name="author" content="Saumy">
+  <link rel="stylesheet" href="/assets/stylesheets/default.css">
+  <link href='https://fonts.googleapis.com/css?family=Cinzel%20Decorative' rel='stylesheet'>
+</head>
+
+<body>
+  <header class="headers">
+    <% include partials/Header.ejs %>
+    <% include partials/Navigation.ejs %>
+  </header>
+
+  <main>
+    <table id="bookmark">
+      <tr>
+        <th>Artist</th>
+        <th>Location</th>
+        <th>RSVP</th>
+        <th>Update/Delete</th>
+      </tr>
+      <% for(var i=0; i<output.length; i++){ %>
+      <tr>
+        <td><%= output[i].connectionName %></td>
+        <td><%= output[i].location %> </td>
+        <td><%= output[i].rsvp %></td>
+        <td>
+          <form class="deleteConnection" action="/savedConnections" method="post">
+            <input type="hidden" id="concertID" name="concertID" value = "<%= output[i].connectionID %>">
+            <input type="submit" class="button" name="delete" value="Delete">
+          </form>
+          <a class="button" href=" <%= '/connection?connectionID='+output[i].connectionID %>">Update</a>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+  </main>
+
+  <footer>
+    <% include partials/footer.ejs %>
+  </footer>
+</body>
+</html>

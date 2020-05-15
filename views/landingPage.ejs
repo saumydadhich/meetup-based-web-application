@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The Concert Hub</title>
+  <meta name="description" content="The Concert Hub">
+  <meta name="author" content="Saumy">
+  <link rel="stylesheet" href="/assets/stylesheets/default.css">
+  <link href='https://fonts.googleapis.com/css?family=Cinzel%20Decorative' rel='stylesheet'>
+</head>
+
+<body>
+  <header class="headers">
+    <% include partials/Header.ejs %>
+    <% include partials/Navigation.ejs %>
+  </header>
+
+  <main>
+    <h2 class="center">MY PROFILE </h2>
+    <img src="../assets/images/<%= image%>" alt="User Image" class="center">
+    <h3>Name: <%= loginName.FirstName %> <%= loginName.LastName %></h3>
+    <h3>Address: <%= loginName.Address1 %>, <%= loginName.Address2 %>, <%= loginName.City %>, <%= loginName.State %>, <%= loginName.ZipCode %></h3>
+    <h4>Concerts Created by you..</h4>
+    <table id="bookmark">
+      <tr>
+        <th>Artist</th>
+        <th>Location</th>
+        <th>Organizer</th>
+        <th>View Concert</th>
+      </tr>
+      <% for(var i=0; i<createdConnections.length; i++){ %>
+      <tr>
+        <td><%= createdConnections[i].connectionName %></td>
+        <td><%= createdConnections[i].location %> </td>
+        <td><%= createdConnections[i].hostName %></td>
+        <td>
+          <a class="button" href=" <%= '/connection?connectionID='+createdConnections[i].connectionID %>">View</a>
+          <form class="deleteConnection" action="/updateMyConnection" method="post">
+            <input type="hidden" id="concertID" name="concertID" value = "<%= createdConnections[i].connectionID %>">
+            <input type="submit" class="button" name="update" value="Update">
+          </form>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+  </main>
+
+  <footer>
+    <% include partials/footer.ejs %>
+  </footer>
+</body>
+</html>
